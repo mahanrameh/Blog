@@ -1,0 +1,14 @@
+CREATE TABLE articles (
+    id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    content MEDIUMTEXT NOT NULL,
+    slug VARCHAR(255) NOT NULL,
+    author_id INT(10) UNSIGNED NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    PRIMARY KEY (id),
+    UNIQUE KEY articles_unique (slug),
+    KEY article_author_fk (author_id),
+    CONSTRAINT article_author_fk FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

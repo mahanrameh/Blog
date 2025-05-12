@@ -1,17 +1,21 @@
 {
-  "name": "sabzlearn-blog",
+  "name": "blog-project",
   "version": "1.0.0",
   "main": "server.js",
   "keywords": [],
+  "scripts": {
+    "migrate": "dotenv -e .env node ./migrations/index.js"
+  },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "a blog project with node,express,sql and ...",
   "volta": {
     "node": "20.16.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
