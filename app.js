@@ -6,6 +6,8 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/authRoute");
 const articleRoute = require("./routes/articleRoute");
+const tagRoute = require("./routes/tagRoute");
+const adminRoute = require("./routes/p-admin");
 
 
 const app = express();
@@ -32,6 +34,8 @@ app.set('view', path.join(__dirname, 'views'));
 
 app.use('/auth', authRoute);
 app.use('/article', articleRoute);
+app.use('/tag', tagRoute);
+app.use('/p-admin', adminRoute);
 
 
 

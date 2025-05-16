@@ -20,7 +20,7 @@ const create = async (name, password, username, email) => {
 };
 
 const findByUsername = async (username) => {
-        const query = "SELECT * FROM users WHERE username = ?";
+    const query = "SELECT * FROM users WHERE username = ?";
 
     const [user] = await db.execute(query, [ username ]);
 
@@ -29,7 +29,7 @@ const findByUsername = async (username) => {
 };
 
 const findById = async (id) => {
-        const query = "SELECT * FROM users WHERE id = ?";
+    const query = "SELECT * FROM users WHERE id = ?";
 
     const [user] = await db.execute(query, [ id ]);
 

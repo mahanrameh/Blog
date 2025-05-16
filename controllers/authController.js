@@ -54,7 +54,8 @@ exports.register = async (req, res, next) => {
         return res.redirect('/auth');
         
 
-        return res.status(201).json({
+        return res.status(201).console.log
+        ({
             accessToken,
             refreshToken: hashedRefreshToken
         });
@@ -128,7 +129,8 @@ exports.login = async (req, res, next) => {
     return res.redirect('/auth');
     
     
-    return res.status(201).json({
+    return res.status(201).console.log
+    ({
         accessToken,
         refreshToken: hashedRefreshToken
     });
