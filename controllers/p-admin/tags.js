@@ -10,3 +10,14 @@ try {
     next(err);
 }
 };
+
+exports.showCreateArticle = async (req, res, next) => {
+    try {
+        const tags = await tagRepo.findAll();
+
+
+        return res.render('p-admin/createArticle.ejs', {tags});
+    } catch (err) {
+        next(err);
+    }
+};

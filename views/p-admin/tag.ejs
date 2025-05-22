@@ -174,11 +174,13 @@
                     <button class="manage-button remove">حذف</button>
                       </form>
 
-                      <form action="/" method="post">
-                    <button class="manage-button edit">ویرایش</button>
-                      </form>
+                      
+                    <button class="manage-button edit" onclick="showUpdateTagModal('<%= tag.id %>', '<%= tag.title %>')">
+                      ویرایش
+                    </button>
+                             
 
-                      <form action="/" method="post">
+                      <form action="/tag/<%= tag.title %>" method="get">
                     <button class="manage-button view">مشاهده</button>
                       </form>
                   </div>
@@ -193,11 +195,34 @@
       </section>
     </main>
 
-    <div class="modal-screen invisible">
-      <div class="modal-card"></div>
+    <div class="modal-screen invisible" id="update-tag-modal">
+      <div class="modal-content">
+        <header>
+          <span></span>
+          <span>ویرایش عنوان</span>
+          <button id="close" class="close-update-tag-modal">X</button>
+        </header>
+        <form action="/tag/update" method="post">
+        <main>
+          <label for="title">عنوان:</label>
+          <input type="hidden" name="id" id="tag-id">
+          <input
+           type="text"
+           id="input"
+           class="tag-title"
+           name="title"
+           placeholder="عنوان جدید را وارد نمایید..."
+           >
+        </main>
+        <footer>
+          <button id="create" type="submit">اعمال تغییرات</button>
+        </footer>
+        </form>
+      </div>
     </div>
 
     <script src="/js/sweetalert.js"></script>
+    <script src="/js/tags.js"></script>
     <Script>
         if ('<%= locals.messages.error %>') {
             swal({

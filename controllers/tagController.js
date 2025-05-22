@@ -28,6 +28,32 @@ exports.create = async (req, res, next) => {
     }
 };
 
+exports.findTagArticle = async (req, res, next) => {
+    try {
+        res.render('');
+    } catch (err) {
+        next(err);
+    }
+};
+
+exports.update = async (req, res, next) => {
+    try {
+        const {id, title} = req.body;
+
+        await tagRepo.update(id, title);
+
+        req.flash('success', 'tag got updated');
+
+        return res.redirect('p-admin/tags');
+        return res.status(200).console.log
+        ({
+            message: 'tag got updated'
+        });
+    } catch (err) {
+        next(err);
+    }
+};
+
 exports.delete = async (req, res, next) => {
     try {
         const { id } = req.params;

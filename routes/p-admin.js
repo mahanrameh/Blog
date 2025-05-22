@@ -10,4 +10,13 @@ router
     .route('/tags')
     .get(authGuard, tagsController.showTagsManage);
 
+
+router
+    .route('/create-article')
+    .get(authGuard, tagsController.showCreateArticle);
+
+
+
+
+
 module.exports = router;
