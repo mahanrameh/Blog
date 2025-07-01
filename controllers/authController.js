@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const svgCaptcha = require("svg-captcha");
 const userRepo = require("./../repositories/userRepo");
 const configs = require("./../configs");
 
@@ -126,7 +127,7 @@ exports.login = async (req, res, next) => {
     req.flash('success', 'signed in successfully');
 
     
-    return res.redirect('/auth');
+    return res.redirect('/');
     
     
     return res.status(201).console.log
@@ -146,4 +147,16 @@ exports.getMe = async (req, res, next) => {
 
 exports.logout = async (req, res, next) => {
 
+};
+
+exports.getCaptcha = (req, res) => {
+    const captcha = svgCaptcha.create({
+        size: 4,
+        color: true,
+        noise: 5
+    });
+
+    return res.json({
+        captcha: captcha.data
+    });
 };

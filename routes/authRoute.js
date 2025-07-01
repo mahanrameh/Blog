@@ -35,12 +35,14 @@ router
     .post(authController.logout);
 
 
+router
+    .route('/captcha')
+    .get(authController.getCaptcha);
 
 
 
-router.get('/', (req, res) => {
-    res.render('index.ejs');
-});
+
+
 
 
 

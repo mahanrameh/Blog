@@ -1,4 +1,6 @@
 const tagRepo = require("./../repositories/tagRepo");
+const articleRepo = require("./../repositories/articleRepo");
+const { calculateTimeGap } = require("../utils/funcs");
 
 
 
@@ -30,7 +32,22 @@ exports.create = async (req, res, next) => {
 
 exports.findTagArticle = async (req, res, next) => {
     try {
-        res.render('');
+        const tagTitle = req.params.slug;
+
+        const tag = await tagRepo.findByTitle(tagTitle);
+
+        const articles = await articleRepo.findTagArticle(tag.id);
+
+
+        articles.forEach(article => {
+            article.created_at = calculateTimeGap(article.created_at);
+        } );
+
+
+        return res.render('tagArticle.ejs', {
+            tag: tag.title,
+            articles
+        });
     } catch (err) {
         next(err);
     }

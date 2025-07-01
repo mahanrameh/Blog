@@ -7,7 +7,9 @@ const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/authRoute");
 const articleRoute = require("./routes/articleRoute");
 const tagRoute = require("./routes/tagRoute");
+const homeRoute = require("./routes/homeRoute");
 const adminRoute = require("./routes/p-admin");
+
 
 
 const app = express();
@@ -32,6 +34,8 @@ app.use('/Images', express.static(path.resolve(__dirname, 'public/Images')));
 app.set('view engine', 'ejs');
 app.set('view', path.join(__dirname, 'views'));
 
+
+app.use('/', homeRoute);
 app.use('/auth', authRoute);
 app.use('/article', articleRoute);
 app.use('/tag', tagRoute);

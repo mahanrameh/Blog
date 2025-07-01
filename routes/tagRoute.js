@@ -1,6 +1,7 @@
 const express = require("express");
 const tagController = require("./../controllers/tagController");
 const authGuard = require("../middlewares/authGuard");
+const roleGuard = require("../middlewares/roleGuard");
 
 
 const router = express.Router();
@@ -8,7 +9,7 @@ const router = express.Router();
 
 router
     .route('/')
-    .get(tagController.getAll)
+    .get(authGuard, roleGuard('admin'), tagController.getAll)
     .post(tagController.create);
 
 

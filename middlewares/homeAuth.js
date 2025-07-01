@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const configs = require("./../configs");
 
+
 module.exports = async (req, res, next) => {
     try {
         const accessToken = req.cookies['access-token'];
@@ -16,15 +17,15 @@ module.exports = async (req, res, next) => {
 
                 next();
             } else {
-            return res.redirct('/auth/login');
+            next();
             }  
 
         } else {
-            return res.redirct('/auth/login');
+            next();
         }
 
 
     } catch (err) {
-        return res.redirct('/auth/login');
+        next();
     }
 };

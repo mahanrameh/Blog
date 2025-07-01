@@ -6,18 +6,18 @@ const authGuard = require("./../middlewares/authGuard");
 
 
 const router = express.Router();
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.resolve(__dirname, '../public/images/cover'));
-    },
-    filename: (req, file, cb) => {
-        const filename = `
-        ${file.originalname}-
-        ${Date.now()}
-        ${path.extname(file.originalname)}`;
-        cb(null, filename);
-    }
-});
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, path.resolve(__dirname, '../public/images/cover'));
+//     },
+//     filename: (req, file, cb) => {
+//         const filename = `
+//         ${file.originalname}-
+//         ${Date.now()}
+//         ${path.extname(file.originalname)}`;
+//         cb(null, filename);
+//     }
+// });
 
 
 const fileFilter = (req, file, cb) => {
@@ -33,7 +33,6 @@ const fileFilter = (req, file, cb) => {
 };
 
 const uploader = multer({
-    storage,
     fileFilter,
     limits: {fileSize: 3 * 1024 * 1024}
 });
